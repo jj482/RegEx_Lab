@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -132,6 +130,34 @@ public class RegEx {
         String ret = getNameFromLine(data[0]) + "|" +getAgeFromLine(data[1])
                 + "|" +getPhoneFromLine(data[2]) + "|" +getEmailFromLine(data[3]);
         return ret;
+    }
+
+    public static void main(String[] args) {
+        // write your code here
+//        String line = "ИванИванов|-27|+7999000 1 1 11|example@@yandex..ru";
+
+        try {
+            File file = new File("D:/example/file.txt");
+            //создаем объект FileReader для объекта File
+            FileReader fr = new FileReader(file);
+            //создаем BufferedReader с существующего FileReader для построчного считывания
+            BufferedReader reader = new BufferedReader(fr);
+            // считаем сначала первую строку
+            String line = reader.readLine();
+            while (line != null) {
+
+//                System.out.println(checkData(line));
+                writeUsingFileWriter(checkData(line));
+                // считываем остальные строки в цикле
+                line = reader.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }
