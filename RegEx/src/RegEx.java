@@ -71,4 +71,38 @@ public class RegEx {
         return phone  ;
 
     }
+
+    public static String getEmailFromLine (String line){
+        boolean ok=true;
+        String left = "";
+        String right = "";
+        String email = "";
+        Pattern pattern = Pattern.compile("@");
+        String[] strings1 = pattern.split(line);
+        left = strings1[0];
+        int i=0;
+        for (String s : strings1) {
+            i++;
+            if (s.length()>3 && i>0){
+//                System.out.println("Email^" + s);
+                right = s;
+            }
+
+        }
+        Pattern pattern2 = Pattern.compile("[.]");
+        String[] strings2 = pattern2.split(right);
+        String left2 = strings2[0];
+        String right2 = "";
+        i=0;
+        for (String s : strings2) {
+            i++;
+            if (s.length()>1 && i>0){
+//                System.out.println("Email^" + s);
+                right2 = s;
+            }
+
+        }
+        right = left2 +"."+ right2;
+        return email = left + "@" + right;
+    }
 }
