@@ -125,4 +125,13 @@ public class RegEx {
             }
         }
     }
+
+    public static String checkData(String line){
+        Pattern pattern = Pattern.compile("[|]");
+        String[]  data = pattern.split(line);
+        String ret = getNameFromLine(data[0]) + "|" +getAgeFromLine(data[1])
+                + "|" +getPhoneFromLine(data[2]) + "|" +getEmailFromLine(data[3]);
+        return ret;
+    }
+
 }
