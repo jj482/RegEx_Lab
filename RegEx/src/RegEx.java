@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -104,5 +107,22 @@ public class RegEx {
         }
         right = left2 +"."+ right2;
         return email = left + "@" + right;
+    }
+
+    private static void writeUsingFileWriter(String data) {
+        File file = new File("D:/example/checkdata.txt");
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            fr.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
