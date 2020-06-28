@@ -47,4 +47,28 @@ public class RegEx {
         }
         return age;
     }
+
+    public static String getPhoneFromLine (String line){
+
+        Pattern pattern = Pattern.compile("[А-Я]");
+        Pattern pattern_gital = Pattern.compile("[0-9]");
+        Matcher m = pattern_gital.matcher(line);
+        String literal = "" ;
+        while (m.find()){
+            int start=m.start();
+            int end=m.end();
+            literal += line.substring(start,end);
+        }
+
+
+//        System.out.println("Found phone: " + literal );
+
+        String phone = "";
+        if (literal.length()>=11) {
+            phone = "+" + literal.charAt(0) + " (" + literal.substring(1, 4) + ") "
+                    + literal.substring(4, 7) + " " + literal.substring(7, 9) + " " + literal.substring(9, 11);
+        }
+        return phone  ;
+
+    }
 }
