@@ -30,4 +30,21 @@ public class RegEx {
 
         return name;
     }
+    public static String getAgeFromLine (String line){
+
+        String age = "";
+        String pattern = "(\\d{2})";
+        Pattern r = Pattern.compile(pattern);
+        // Теперь создаем объект соответствия.
+        Matcher m = r.matcher(line);
+        if (m.find( )) {
+            age = m.group(0);
+//            System.out.println("Found age: " + m.group(0) );
+        }else {
+
+//            System.out.println("NO MATCH");
+
+        }
+        return age;
+    }
 }
